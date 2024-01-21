@@ -39,11 +39,11 @@ const Hero = () => {
               </Text>
 
               <div className="text-white lg:text-lg md:text-base text-xs">
-                Hello {userName || 'Guest'}. Before hiring me see my skill and my latest work to know what i provide for your project!
+                Hello {userName || 'Guest'}. Before hiring me see my skills and my latest works to know what i provide for your projects!
               </div>
 
               <div className='flex justify-start items-center md:gap-4 gap-2'>
-                <Link href='/Skils' className='group'>
+                <Link href='/Skills' className='group'>
                 
                     <button className='flex justify-center items-center md:gap-4 gap-2 bg-white text-black md:px-6 md:py-3 px-4 py-2 lg:text-lg md:text-md text-xs rounded-md hover:bg-[#00da8e] group-hover:text-white duration-500'>
                       See My Skills
