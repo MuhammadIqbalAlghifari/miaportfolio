@@ -116,12 +116,13 @@ export default function ContactMe() {
 
                         <div className="flex flex-col w-full md:gap-4 gap-2 justify-center items-center">
 
+                        {error && (
+                            <Text color="red.500" mt={2}>
+                            {error}
+                            </Text>
+                        )}
+
                             <div className="flex flex-col md:flex-row w-full justify-center lg:gap-6 md:gap-4 gap-2 items-center">
-                                {error && (
-                                    <Text color="red.500" mt={2}>
-                                    {error}
-                                    </Text>
-                                )}
                                 <FormControl isRequired isInvalid={touched.name && !value.name}>
                                     <FormLabel color='white'>Name</FormLabel>
                                     <Input
