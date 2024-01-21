@@ -33,7 +33,7 @@ const BackgroundLanding = () => {
     return (
         <div style={{ position: "relative"}}> 
         {!init && 
-        <div className="bg-[#151515] w-full h-screen flex flex-col gap-3 items-center justify-center fixed top-0 left-0 z-50 text-white" style={{fontFamily: 'Futura Hv'}}>
+        <div className="bg-[#151515] w-full h-screen flex flex-col gap-3 items-center justify-center fixed z-50 text-white" style={{fontFamily: 'Futura Hv'}}>
             <Spinner
             thickness='4px'
             speed='0.65s'
@@ -103,7 +103,7 @@ const BackgroundLanding = () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 200,
+                        value: 350,
                     },
                     opacity: {
                         value: 1,

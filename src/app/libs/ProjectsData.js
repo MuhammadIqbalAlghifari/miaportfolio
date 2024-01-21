@@ -100,7 +100,7 @@ export const PlatinumAnimation = [
         Status: 'Finished',
         Language : 'Javascript',
         Date : '01 September 2023 - 07 September 2023',
-        Image1: '/Platinum.png',
+        Image1: '/platinum.png',
         Image2: '',
         Image3: '',
         Image4: '',
@@ -131,7 +131,7 @@ export const AnyerWonderlandAnimation = [
 export const KnockoutKings = [
     {
         Name : 'Knockout Kings',
-        Description : 'This is my first time i created a functional websit. A little challenging but it helps me to improve a lot. This website has an authentication log-in, a payment gateway, and dark mode feature',
+        Description : 'This is my first time i created a functional website. A little challenging but it helps me to improve a lot. This website has an authentication log-in, a payment gateway, and dark mode feature',
         Category : 'Functional Website',
         Status: 'Finished',
         Language : 'React.js, Next.js, TailwindCSS',
