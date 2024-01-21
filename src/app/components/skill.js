@@ -20,7 +20,7 @@ export default function SkillList() {
                           bgClip="text"
                           fontWeight='extrabold'
                           >
-                          Favourite Skills
+                          My Skills
                           </Text>
                           <Text
                           className="lg:text-xl md:text-md text-sm"
