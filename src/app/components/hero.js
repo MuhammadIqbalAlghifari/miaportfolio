@@ -56,7 +56,7 @@ const Hero = () => {
 
                 <Link href='/Projects' className='group'>
                 
-                    <button className='flex justify-center items-center md:gap-4 gap-2 bg-white text-black md:px-6 md:py-3 px-4 py-2 lg:text-lg md:text-md text-xs rounded-md hover:bg-[#00da8e] group-hover:text-white duration-500'>
+                    <button className='flex justify-center items-center md:gap-4 gap-2 bg-white text-black md:px-6 md:py-3 px-4 py-2 lg:text-lg md:text-md text-[10px] rounded-md hover:bg-[#00da8e] group-hover:text-white duration-500'>
                       See My Projects 
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:w-5 md:h-5 w-4 h-4 group-hover:translate-x-1 duration-100">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
