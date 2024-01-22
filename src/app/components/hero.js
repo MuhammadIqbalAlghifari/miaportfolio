@@ -39,16 +39,16 @@ const Hero = () => {
               </Text>
 
               <div className="text-white lg:text-lg md:text-base text-xs">
-                Hello {userName || 'Guest'}. Before hiring me see my skills and my latest works to know what i provide for your projects!
+                Hello {userName || 'Guest'}. Before hiring me see my latest works to know what i provide for your projects, and contact me if you want me on your projects!
               </div>
 
               <div className='flex justify-start items-center md:gap-4 gap-2'>
-                <Link href='/Skills' className='group'>
+                <Link href='/About#Contact' className='group'>
                 
-                    <button className='flex justify-center items-center md:gap-4 gap-2 bg-white text-black md:px-6 md:py-3 px-4 py-2 lg:text-lg md:text-md text-xs rounded-md hover:bg-[#00da8e] group-hover:text-white duration-500'>
-                      See My Skills
+                    <button className='flex justify-center items-center md:gap-4 gap-2 bg-white text-black md:px-6 md:py-3 px-4 py-2 lg:text-lg md:text-md text-[10px] rounded-md hover:bg-[#00da8e] group-hover:text-white duration-500'>
+                      Get In Touch
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:w-5 md:h-5 w-4 h-4 duration-100">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                       </svg>
                     </button>
 

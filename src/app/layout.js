@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <ChakraProvider>
         <UserProvider>
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className} style={{scrollBehavior: 'smooth'}}>{children}</body>
         </UserProvider>
       </ChakraProvider>
     </html>

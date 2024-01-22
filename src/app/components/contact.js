@@ -94,7 +94,7 @@ export default function ContactMe() {
 
     return (
         <>    
-          <section className="px-10 py-10 transition-all duration-500 relative" style={{ fontFamily: 'Futura Hv', zIndex: 1 }}>
+          <section id="Contact" className="px-10 py-10 transition-all duration-500 relative" style={{ fontFamily: 'Futura Hv', zIndex: 1 }}>
                 <div className="flex flex-col max-w-7xl h-full mx-auto justify-center items-center py-4">
                     <div className="flex flex-col w-full items-center justify-center text-center md:gap-4 gap-3">
 
