@@ -14,7 +14,7 @@ export default function AboutMe() {
     
             <section className="px-10 transition-all duration-500 relative" style={{fontFamily: 'Futura Hv', zIndex: 1}}>
                   <div className="flex flex-col max-w-7xl mx-auto justify-center h-full items-center md:pt-24 pt-20">
-                      <div className="flex flex-col w-full backdrop-blur-md hover:bg-black hover:bg-opacity-40 rounded-lg duration-500 items-center justify-center p-8 text-center md:gap-4 gap-3">
+                      <div className="flex flex-col w-full items-center justify-center p-8 text-center md:gap-4 gap-3">
                           
                           <Text
                           className="lg:text-xl md:text-md text-sm"
@@ -51,8 +51,10 @@ export default function AboutMe() {
                           </Text>
 
                           <div className="flex justify-center items-center md:gap-4 gap-2">
-                            {SocialMediaData.map(({ Svg, index}) => (
-                              <div key={index} dangerouslySetInnerHTML={{__html: Svg}} className="lg:h-14 lg:w-14 md:h-12 md:w-12 h-10 w-10 md:p-3 p-2 border border-white rounded-full text-white hover:text-[#00da8e] hover:border-[#00da8e] duration-500"/>
+                            {SocialMediaData.map(({ Svg, Href, index}) => (
+                              <a href={Href}>
+                                <div key={index} dangerouslySetInnerHTML={{__html: Svg}} className="lg:h-14 lg:w-14 md:h-12 md:w-12 h-10 w-10 md:p-3 p-2 border border-white rounded-full text-white hover:text-[#00da8e] hover:border-[#00da8e] duration-500"/>
+                              </a>
                             ))}
                           </div>
 

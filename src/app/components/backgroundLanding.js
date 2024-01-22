@@ -85,7 +85,7 @@ const BackgroundLanding = () => {
                         color: "#f5f5f5",
                         distance: 50,
                         enable: true,
-                        opacity: 1,
+                        opacity: 0.7,
                         width: 2,
                     },
                     move: {
@@ -103,7 +103,7 @@ const BackgroundLanding = () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 350,
+                        value: 300,
                     },
                     opacity: {
                         value: 1,
