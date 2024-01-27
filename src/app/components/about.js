@@ -4,8 +4,27 @@ import SocialMediaData from "../libs/SocialMediaData";
 import BackgroundPortfolio from "./backgroundPortfolio";
 import { Text } from "@chakra-ui/react";
 import ContactMe from "./contact";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { easeOut } from "framer-motion";
 
 export default function AboutMe() {
+
+  let tittleItem, Image, subTittleItem, descriptionItem, subTittleSosmedItem, socialMediaContainer = useRef(null)
+
+  useEffect(() => {
+    gsap.fromTo([tittleItem, Image, subTittleItem, descriptionItem, subTittleSosmedItem, socialMediaContainer.current.children],
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 1,
+        stagger: .2,
+        ease: easeOut,
+      },
+      )
+  }) 
 
     return (
         <div className="relative">
@@ -21,16 +40,18 @@ export default function AboutMe() {
                           bgGradient="linear(to-r, #4eecda, #00da8e)"
                           bgClip="text"
                           fontWeight='extrabold'
+                          ref={el => {tittleItem = el}}
                           >
                           My Profile
                           </Text>
 
-                          <img src="/about-me.jpg" className="object-cover bg-no-repeat md:mt-10 w-44 h-44 rounded-full"/>
+                          <img ref={el => {Image = el}} src="/about-me.jpg" className="object-cover bg-no-repeat md:mt-10 w-44 h-44 rounded-full"/>
 
                           <Text
                           className="lg:text-4xl md:text-2xl text-xl"
                           color='white'
                           fontWeight='extrabold'
+                          ref={el => {subTittleItem = el}}
                           >
                           About Me
                           </Text>
@@ -38,6 +59,7 @@ export default function AboutMe() {
                           <Text
                           className="lg:text-md md:text-base text-sm"
                           color='white'
+                          ref={el => {descriptionItem = el}}
                           >
                           I'm a front end developer with a couple years of experience in web development. I've worked on a variety of projects for clients in the user interface and user experience design, making a functional website, and working on corporate company. I'm passionate about creating great user experiences and have a strong understanding of usability and accessibility standards.
                           </Text>
@@ -46,13 +68,14 @@ export default function AboutMe() {
                           className="lg:text-xl md:text-md text-base py-2"
                           color= 'white'
                           fontWeight='extrabold'
+                          ref={el => {subTittleSosmedItem = el}}
                           >
                           My Social Media
                           </Text>
 
-                          <div className="flex justify-center items-center md:gap-4 gap-2">
+                          <div ref={socialMediaContainer} className="flex justify-center items-center md:gap-4 gap-2">
                             {SocialMediaData.map(({ Svg, Href, index}) => (
-                              <a href={Href}>
+                              <a href={Href} target='_blank' rel="noopener noreferrer">
                                 <div key={index} dangerouslySetInnerHTML={{__html: Svg}} className="lg:h-14 lg:w-14 md:h-12 md:w-12 h-10 w-10 md:p-3 p-2 border border-white rounded-full text-white hover:text-[#00da8e] hover:border-[#00da8e] duration-500"/>
                               </a>
                             ))}

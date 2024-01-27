@@ -1,10 +1,29 @@
 "use client"
 
+import { useEffect, useRef } from "react";
 import BackgroundPortfolio from "./backgroundPortfolio";
 import CollapseProjects from "./MyProjectsCollapse";
 import { Text } from "@chakra-ui/react";
+import gsap from "gsap";
+import { easeOut } from "framer-motion";
 
 export default function ProjectList() {
+
+  let tittleItem, descriptionItem = useRef(null)
+
+  useEffect(() => {
+    gsap.fromTo([tittleItem, descriptionItem], 
+        {
+            opacity: 0
+        },
+        {
+            opacity: 1,
+            duration: 1,
+            stagger: .2,
+            ease: easeOut,
+        }
+        )
+})
 
     return (
         <div className="relative">
@@ -19,10 +38,12 @@ export default function ProjectList() {
                           bgGradient="linear(to-r, #4eecda, #00da8e)"
                           bgClip="text"
                           fontWeight='extrabold'
+                          ref={el => {tittleItem = el}}
                           >
                           My latest Jobs
                           </Text>
                           <Text
+                          ref={el => {descriptionItem = el}}
                           className="lg:text-xl md:text-md text-sm"
                           color='white'
                           fontWeight='extrabold'

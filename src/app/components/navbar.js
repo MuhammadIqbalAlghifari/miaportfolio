@@ -1,11 +1,14 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
-
 import Logo from "./Logo.js";
+import { easeOut } from "framer-motion";
+import gsap from "gsap";
+import { usePathname } from "next/navigation.js";
 
 const NavBar = (props) => {
+
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -63,6 +66,14 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 };
 
 const MenuLinks = ({ isOpen }) => {
+
+  const currentRoute = usePathname();
+
+  const linkStyle = 'hover:text-white transition duration-300 ease'; 
+
+  const activeStyle = linkStyle + ' text-white font-bold'; 
+  const nonActiveStyle = linkStyle + ' text-[#4eecda] transition duration-500';
+
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -76,19 +87,28 @@ const MenuLinks = ({ isOpen }) => {
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem className="hover:text-[]" to="/Home">Home</MenuItem>
-        <MenuItem to="/Services">My Sevices </MenuItem>
-        <MenuItem to="/Projects">My Projects </MenuItem>
-        <MenuItem to="/Skills">My Skills </MenuItem>
-        <MenuItem to="/About">About Me </MenuItem>
+        <MenuItem className={currentRoute === '/Home' ? activeStyle : nonActiveStyle} to="/Home">Home</MenuItem>
+        <MenuItem className={currentRoute === '/Services' ? activeStyle : nonActiveStyle} to="/Services">My Sevices </MenuItem>
+        <MenuItem className={currentRoute === '/Projects' ? activeStyle : nonActiveStyle} to="/Projects">My Projects </MenuItem>
+        <MenuItem className={currentRoute === '/Skills' ? activeStyle : nonActiveStyle} to="/Skills">My Skills </MenuItem>
+        <MenuItem className={currentRoute === '/About' ? activeStyle : nonActiveStyle} to="/About">About Me </MenuItem>
       </Stack>
     </Box>
   );
 };
 
 const NavBarContainer = ({ children, ...props }) => {
+
+  let NavbarElement = useRef(null)
+
+  useEffect(() => {
+    gsap.from(NavbarElement, { opacity: 0, y: -90, })
+    gsap.to(NavbarElement, { opacity: 1, y: 0, ease: easeOut, duration: 1 })
+  }, [])
+
   return (
       <Flex
+        ref={el => {NavbarElement = el}}
         className="bg-opacity-70 backdrop-blur"
         as="nav"
         align="center"
