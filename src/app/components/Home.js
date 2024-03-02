@@ -36,8 +36,8 @@ export default function HomeSection() {
     }
 
     const animateOnMobile = () => {
-      animateOnScroll(LeftSection, {opacity: 0, y: -30})
-      animateOnScroll(RightSection, {opacity: 0, y: 30})
+      animateOnScroll(LeftHero, {opacity: 0, y: -30})
+      animateOnScroll(RightHero, {opacity: 0, y: 30})
     }
 
 
