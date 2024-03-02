@@ -33,3 +33,35 @@
     font-style: normal;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: 'Avant Garde';
+    src: url('./Font/AvantGardeLT-Bold.woff2') format('woff2'),
+        url('./Font/AvantGardeLT-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+  .active {
+    color: yellow;
+  }
+
+  body.bg {
+  background: linear-gradient(-45deg, #5d514d, #06226e, #910c0f, #424544);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

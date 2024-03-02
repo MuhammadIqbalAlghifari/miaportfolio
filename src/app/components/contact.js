@@ -1,204 +1,94 @@
 "use client"
 
-import { Button, FormControl, FormErrorMessage, FormLabel, Input, Text, Textarea, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useRef } from "react";
+import FormEmail from "./Form"
+import gsap from "gsap";
+import { easeOut } from "framer-motion";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-const formValue = { 
-    name: "",
-    email: "",
-    subject: "",
-    message: "",}
+export default function ContactSection() {
 
-const formData = {value: formValue}
+    let HeroSection, LeftSection, Contact, FirstTittleItem, SecondTittleItem, DescItem = useRef() 
 
-export default function ContactMe() {
-    
-    const [ state, setState] = useState(formData);
-    const [ touched, setTouched] = useState({});
-    const [ error, setError ] = useState(null)
-    const toast = useToast()
+    useEffect(() => {
 
-    const { value, isLoading} = state
+        gsap.registerPlugin(ScrollTrigger)
 
-    const onBlur = ({target}) => setTouched((prev) => ({...prev,
-        [target.name]:true
-    }));
-
-    const handleChange = ({target}) => setState ((prev) => ({
-        ...prev,
-        value: {
-            ...prev.value,
-            [target.name]: target.value,
+        const animateOnScroll = (element, { opacity, x, y }) => {
+            gsap.fromTo(element, { opacity: 0, x, y }, {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                stagger: 0.2,
+                delay: 0.5,
+                duration: 0.7,
+                ease: easeOut,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom",
+                    end: "center center"
+                }
+            })
         }
-    }));
 
-    const onSubmit = async () => {
-        setState((prev) => ({
-            ...prev,
-            isLoading: true
-        }));
-    
-        console.log('Email Request:', JSON.stringify(value));
-    
-        try {
-            const response = await fetch("/api", {
-                method: 'POST',
-                body: JSON.stringify(value),
-            });
-    
-            if (response.ok) {
-                
-                setState({
-                    value: {
-                        name: "",
-                        email: "",
-                        subject: "",
-                        message: "",
-                    },
-                    isLoading: false,
-                });
+        const animateOnDekstop = () => {
+            animateOnScroll(HeroSection, {opacity: 0})
+            animateOnScroll([LeftSection, Contact], {opacity: 0, x: -50})
+            animateOnScroll([FirstTittleItem, SecondTittleItem, DescItem], {opacity: 0, y: 50})
+        };
 
-                setTouched({});
+        const animateOnMobile = () => {
+            animateOnScroll(HeroSection, {opacity: 0})
+            animateOnScroll(LeftSection, {opacity: 0})
+            animateOnScroll(Contact, {opacity: 0, x: 25})
+            animateOnScroll([FirstTittleItem, SecondTittleItem, DescItem], {opacity: 0, y: 50})
+        };
 
-                setError(null);
-                toast({
-                    title: "Email Sent",
-                    description: "Your email has been sent successfully.",
-                    status: "success",
-                    duration: 5000,
-                    isClosable: true,
-                });
-            } else {
-                // Show error toast for non-successful responses
-                throw new Error('Failed to send an email');
-            }
-        } catch (error) {
-            console.error("Error processing request", error);
-            setError("Failed to send email");
-    
-            // Show error toast
-            toast({
-                title: "Error",
-                description: "Failed to send email.",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-            });
-        } finally {
-            setState((prev) => ({
-                ...prev,
-                isLoading: false,
-            }));
+        const isDekstop = window.matchMedia("(min-width: 768px)").matches;
+
+        isDekstop ? animateOnDekstop() : animateOnMobile()
+
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => {
+                trigger.kill();
+            })
         }
-    };
+    })
 
     return (
-        <>    
-          <section id="Contact" className="px-10 py-10 transition-all duration-500 relative" style={{ fontFamily: 'Futura Hv', zIndex: 1 }}>
-                <div className="flex flex-col max-w-7xl h-full mx-auto justify-center items-center py-4">
-                    <div className="flex flex-col w-full items-center justify-center text-center md:gap-4 gap-3">
+        <section ref={el => {HeroSection = el}} id="Contact" className="max-w-7xl lg:py-24 md:py-18 py-11 lg:p-0 p-6 relative mx-auto flex flex-col gap-14 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-                        <Text
-                        className="lg:text-4xl md:text-2xl text-xl"
-                        bgGradient="linear(to-r, #4eecda, #00da8e)"
-                        bgClip="text"
-                        fontWeight='extrabold'
-                        >
-                        Get In Touch
-                        </Text>
-                        <Text
-                        className="lg:text-6xl md:text-4xl text-2xl"
-                        color='white'
-                        fontWeight='extrabold'
-                        >
-                        Contact Me
-                        </Text>
+            <div ref={el => {LeftSection = el}} className="flex flex-row-reverse lg:flex-row gap-6 md:gap-12 justify-between w-full lg:justify-center items-center md:max-w-xl">
 
-                        <div className="flex flex-col w-full md:gap-4 gap-2 justify-center items-center">
+                <div ref={el => {Contact = el}} className="flex flex-col justify-center items-center gap-4">
 
-                        {error && (
-                            <Text color="red.500" mt={2}>
-                            {error}
-                            </Text>
-                        )}
-
-                            <div className="flex flex-col md:flex-row w-full justify-center lg:gap-6 md:gap-4 gap-2 items-center">
-                                <FormControl isRequired isInvalid={touched.name && !value.name}>
-                                    <FormLabel color='white'>Name</FormLabel>
-                                    <Input
-                                    errorBorderColor="#4eecda" 
-                                    focusBorderColor="#00da8e" 
-                                    type="text"
-                                    name="name"
-                                    value={value.name}
-                                    onChange={handleChange}
-                                    onBlur={onBlur}
-                                    className="text-white focus:bg-black focus:bg-opacity-50 duration-500 backdrop-blur-md"/>
-                                    <FormErrorMessage color='#00da8e'>Required</FormErrorMessage>
-                                </FormControl>
-                            
-                                <FormControl isRequired isInvalid={touched.email && !value.email}>
-                                    <FormLabel color='white'>Email</FormLabel>
-                                    <Input
-                                    errorBorderColor="#4eecda" 
-                                    type="email"
-                                    name="email"
-                                    value={value.email}
-                                    onChange={handleChange}
-                                    onBlur={onBlur}
-                                    focusBorderColor="#00da8e" 
-                                    className="text-white focus:bg-black focus:bg-opacity-50 duration-500 backdrop-blur-md"/>
-                                    <FormErrorMessage color='#00da8e'>Required</FormErrorMessage>
-                                </FormControl>
-                            </div>
-
-                            <FormControl isRequired isInvalid={touched.subject && !value.subject}>
-                                <FormLabel color='white '>Subject</FormLabel>
-                                    <Input
-                                    errorBorderColor="#4eecda" 
-                                    type="text"
-                                    name="subject"
-                                    value={value.subject}
-                                    onChange={handleChange}
-                                    onBlur={onBlur}
-                                    focusBorderColor="#00da8e" 
-                                    className="text-white focus:bg-black focus:bg-opacity-50 duration-500 backdrop-blur-md"/>
-                                <FormErrorMessage color='#00da8e'>Required</FormErrorMessage>
-                            </FormControl>
-                            <FormControl isRequired isInvalid={touched.message && !value.message}>
-                                <FormLabel color='white'>Message</FormLabel>
-                                    <Textarea
-                                    errorBorderColor="#4eecda" 
-                                    type="text"
-                                    rows={4}
-                                    name="message"
-                                    value={value.message}
-                                    onChange={handleChange}
-                                    onBlur={onBlur}
-                                    focusBorderColor="#00da8e" 
-                                    className="text-white focus:bg-black focus:bg-opacity-50 duration-500 backdrop-blur-md"/>
-                                <FormErrorMessage color='#00da8e'>Required</FormErrorMessage>
-                            </FormControl>
-
-
-                                <Button
-                                textColor='white'
-                                _hover={{borderColor: '#4eecda', backgroundColor: 'black'}}
-                                borderColor='white'
-                                variant='outline'
-                                isDisabled={!value.name || !value.email || !value.subject || !value.message}
-                                onClick={onSubmit}
-                                isLoading={isLoading}
-                                >
-                                Submit
-                                </Button>
-
+                    <div className="flex flex-col justify-center items-center gap-2">
+                        <div className="flex flex-col justify-center items-center">
+                            {[ 'T', 'C', 'A', 'T', 'N', 'O', 'C'].map((letter, index) => (
+                                <p key={index} className="md:text-sm text-xs text-black h-3 dark:text-white rotate-[270deg]">{letter}</p>
+                                ))}
                         </div>
+                    </div>
 
+                    <hr className="border border-black dark:border-white md:h-12 h-9"/>
+
+                </div>
+
+                    <div className="flex flex-col w-full justify-center lg:items-start items-center">
+
+                        <h1 ref={el => {FirstTittleItem = el}} className="lg:text-4xl md:text-2xl text-xl font-bold text-center lg:text-start text-black dark:text-white">You Have Any Project?</h1>
+                        <h1 ref={el => {SecondTittleItem = el}} className="lg:text-4xl md:text-2xl text-xl font-bold text-center lg:text-start text-black dark:text-white">Please drop a message</h1>
+                        <h2 ref={el => {DescItem = el}} className="lg:text-md md:text-base text-center lg:text-start text-sm text-black dark:text-white">Contact me by filling the form to hire me on your project</h2>
 
                     </div>
-                </div>
-          </section>
-        </>
-      );
+
+            </div>
+
+            <FormEmail/>
+
+        </section>
+    )
 }

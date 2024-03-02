@@ -1,94 +1,117 @@
 "use client"
+import { easeOut } from "framer-motion"
+import gsap from "gsap"
+import { useEffect, useRef } from "react"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import { Menu, MenuButton, MenuItem, MenuList, Button } from "@chakra-ui/react"
+import ChevronDownIcon from "./ChevronDownIcon"
 
-import SocialMediaData from "../libs/SocialMediaData";
-import BackgroundPortfolio from "./backgroundPortfolio";
-import { Text } from "@chakra-ui/react";
-import ContactMe from "./contact";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { easeOut } from "framer-motion";
+export default function AboutSection() {
 
-export default function AboutMe() {
+    let HeroSection, LeftSection, AboutMe, TittleItem, DescItem, RightSection, AboutItem, ButtonCv = useRef() 
 
-  let tittleItem, Image, subTittleItem, descriptionItem, subTittleSosmedItem, socialMediaContainer = useRef(null)
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+    
+        const animateOnScroll = (element, { opacity, x, y }) => {
+            gsap.fromTo(element, { opacity: 0, x, y }, {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                stagger: 0.2,
+                delay: 0.5,
+                ease: easeOut,
+                duration: 0.7,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top bottom',
+                    end: 'center center'
+                }
+            });
+        };
+    
+        const animateOnDesktop = () => {
+            animateOnScroll(HeroSection, { opacity: 0 });
+            animateOnScroll([LeftSection, AboutMe], { opacity: 0, x: -50 });
+            animateOnScroll(RightSection, { opacity: 0, x: 50 });
+            animateOnScroll([TittleItem, DescItem], { opacity: 0, y: 50 });
+            animateOnScroll([AboutItem, ButtonCv], { opacity: 0, y: 50 });
+        };
+    
+        const animateOnMobile = () => {
+            animateOnScroll(HeroSection, { opacity: 0 });
+            animateOnScroll(LeftSection, { opacity: 0 });
+            animateOnScroll(AboutMe, { opacity: 0, x: -25 });
+            animateOnScroll(RightSection, { opacity: 0 });
+            animateOnScroll([TittleItem, DescItem], { opacity: 0, y: 50 });
+            animateOnScroll([AboutItem, ButtonCv], { opacity: 0, y: 50 });
+        };
+    
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    
+        isDesktop ? animateOnDesktop() : animateOnMobile();
+    }, []);
 
-  useEffect(() => {
-    gsap.fromTo([tittleItem, Image, subTittleItem, descriptionItem, subTittleSosmedItem, socialMediaContainer.current.children],
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 1,
-        stagger: .2,
-        ease: easeOut,
-      },
-      )
-  }) 
+    useEffect(() => {
+        return () => {
+          ScrollTrigger.getAll().forEach((trigger) => {
+            trigger.kill();
+          });
+        };
+      }, []);
 
     return (
-        <div className="relative">
-          <div className="w-full absolute bg-no-repeat -z-10 bg-cover">
-            <BackgroundPortfolio />
-    
-            <section className="px-10 transition-all duration-500 relative" style={{fontFamily: 'Futura Hv', zIndex: 1}}>
-                  <div className="flex flex-col max-w-7xl mx-auto justify-center h-full items-center md:pt-24 pt-20">
-                      <div className="flex flex-col w-full items-center justify-center p-8 text-center md:gap-4 gap-3">
-                          
-                          <Text
-                          className="lg:text-xl md:text-md text-sm"
-                          bgGradient="linear(to-r, #4eecda, #00da8e)"
-                          bgClip="text"
-                          fontWeight='extrabold'
-                          ref={el => {tittleItem = el}}
-                          >
-                          My Profile
-                          </Text>
+        <section ref={el => {HeroSection = el}} id="About" className="max-w-7xl lg:py-24 md:py-18 py-11 lg:p-0 p-6 relative mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-                          <img ref={el => {Image = el}} src="/about-me.jpg" className="object-cover bg-no-repeat md:mt-10 w-44 h-44 rounded-full"/>
+            <div ref={el => {LeftSection = el}} className="flex justify-center gap-6 md:gap-12 items-center max-w-xl">
 
-                          <Text
-                          className="lg:text-4xl md:text-2xl text-xl"
-                          color='white'
-                          fontWeight='extrabold'
-                          ref={el => {subTittleItem = el}}
-                          >
-                          About Me
-                          </Text>
+                <div ref={el => {AboutMe = el}} className="flex flex-col justify-center items-center gap-4">
 
-                          <Text
-                          className="lg:text-md md:text-base text-sm"
-                          color='white'
-                          ref={el => {descriptionItem = el}}
-                          >
-                          I'm a front end developer with a couple years of experience in web development. I've worked on a variety of projects for clients in the user interface and user experience design, making a functional website, and working on corporate company. I'm passionate about creating great user experiences and have a strong understanding of usability and accessibility standards.
-                          </Text>
+                    <div className="flex flex-col justify-center items-center gap-2">
+                        <div className="flex flex-col justify-center items-center">
+                            {['E', 'M'].map((letter, index) => (
+                                <p key={index} className="md:text-sm text-xs text-black h-3 dark:text-white rotate-[270deg]">{letter}</p>
+                                ))}
+                        </div>
+                        
+                        <div className="flex flex-col justify-center items-center">
+                            {['T', 'U', 'O', 'B', 'A'].map((letter, index) => (
+                                <p key={index} className="md:text-sm text-xs text-black h-3 dark:text-white rotate-[270deg]">{letter}</p>
+                                ))}
+                        </div>
+                    </div>
 
-                          <Text
-                          className="lg:text-xl md:text-md text-base py-2"
-                          color= 'white'
-                          fontWeight='extrabold'
-                          ref={el => {subTittleSosmedItem = el}}
-                          >
-                          My Social Media
-                          </Text>
+                    <hr className="border border-black dark:border-white md:h-12 h-9"/>
 
-                          <div ref={socialMediaContainer} className="flex justify-center items-center md:gap-4 gap-2">
-                            {SocialMediaData.map(({ Svg, Href, index}) => (
-                              <a href={Href} target='_blank' rel="noopener noreferrer">
-                                <div key={index} dangerouslySetInnerHTML={{__html: Svg}} className="lg:h-14 lg:w-14 md:h-12 md:w-12 h-10 w-10 md:p-3 p-2 border border-white rounded-full text-white hover:text-[#00da8e] hover:border-[#00da8e] duration-500"/>
-                              </a>
-                            ))}
-                          </div>
+                </div>
 
+                <div className="flex flex-col w-full justify-center lg:items-start items-center">
 
-                      </div>
-                  </div>
-            </section>
+                    <h1 ref={el => {TittleItem = el}} className="lg:text-4xl md:text-2xl text-xl font-bold text-center lg:text-start text-black dark:text-white">Who Am I?</h1>
+                    <h2 ref={el => {DescItem = el}} className="lg:text-md md:text-base text-center lg:text-start text-sm text-black dark:text-white">I am a front end web developer with couple years of experience and working on several projects.</h2>
 
-            <ContactMe/>
-          </div>
+                </div>
 
-        </div>
-      );
+            </div>
+
+            <div ref={el => {RightSection = el}} className="flex flex-col max-w-xl md:gap-4 gap-2 justify-center lg:items-start items-center">
+                
+                <h2 ref={el => {AboutItem = el}} className="lg:text-md md:text-base text-justify text-sm text-black dark:text-white">Hi! I'm <text className="font-extrabold">Iqbal Alghifari</text>, and I'm a web developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and conceps in addition to working on various solo front end projects. I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.</h2>
+
+                {/* <button ref={el => {Button = el}} id="Button" className="bg-black shadow-md shadow-black dark:bg-white md:text-base text-sm px-4 py-2 rounded-lg font-bold text-white dark:text-black">DOWNLOAD CV</button> */}
+
+                <Menu>
+                    <MenuButton bgColor='#1c1c1c' textColor='white' _hover={false} _active={false} ref={el => {ButtonCv = el}} className="bg-black shadow-md shadow-black dark:bg-[#f5f5f5] md:text-base text-xs px-4 py-2 rounded-lg font-bold text-white dark:text-black" as={Button} rightIcon={<ChevronDownIcon/>}>
+                        DOWNLOAD CV
+                    </MenuButton>
+                    <MenuList bgColor='#1c1c1c' textColor='white' className="dark:bg-[#f5f5f5] transition-all">
+                        <MenuItem bgColor='#1c1c1c' border='none' textColor='white' className="dark:bg-[#f5f5f5] dark:text-black"><a href="/CV ATS MUHAMMAD IQBAL ALGHIFARI - INDONESIA VERSION.pdf" download={true}>Indonesia Version</a></MenuItem>
+                        <MenuItem bgColor='#1c1c1c' border='none' textColor='white' className="dark:bg-[#f5f5f5] dark:text-black"><a href="/CV ATS MUHAMMAD IQBAL ALGHIFARI - ENGLISH VERSION.pdf" download={true}>English Version</a></MenuItem>
+                    </MenuList>
+                </Menu>
+
+            </div>
+
+        </section>
+    )
 }

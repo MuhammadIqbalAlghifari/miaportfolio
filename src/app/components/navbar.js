@@ -1,11 +1,11 @@
 "use client"
 
-import React, { useEffect, useRef } from "react";
-import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Flex, Text, Stack} from "@chakra-ui/react";
 import Logo from "./Logo.js";
 import { easeOut } from "framer-motion";
 import gsap from "gsap";
-import { usePathname } from "next/navigation.js";
+import Link from "next/link.js";
 
 const NavBar = (props) => {
 
@@ -28,8 +28,7 @@ const NavBar = (props) => {
 const CloseIcon = () => (
   <svg width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
     <title>Close</title>
-    <path
-      fill="white"
+    <path className="text-black dark:text-white"
       d="M9.00023 7.58599L13.9502 2.63599L15.3642 4.04999L10.4142 8.99999L15.3642 13.95L13.9502 15.364L9.00023 10.414L4.05023 15.364L2.63623 13.95L7.58623 8.99999L2.63623 4.04999L4.05023 2.63599L9.00023 7.58599Z"
     />
   </svg>
@@ -40,10 +39,9 @@ const MenuIcon = () => (
     width="24px"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
-    fill="white"
   >
     <title>Menu</title>
-    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+    <path className="text-black dark:text-white" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
   </svg>
 );
 
@@ -67,12 +65,28 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 
 const MenuLinks = ({ isOpen }) => {
 
-  const currentRoute = usePathname();
-
-  const linkStyle = 'hover:text-white transition duration-300 ease'; 
-
-  const activeStyle = linkStyle + ' text-white font-bold'; 
-  const nonActiveStyle = linkStyle + ' text-[#4eecda] transition duration-500';
+  let NavbarSection = [
+    {
+      to: "#Home",
+      name: "Home",
+    },
+    {
+      to: "#About",
+      name: "About Me",
+    },
+    {
+      to: "#Skills",
+      name: "My SKills",
+    },
+    {
+      to: "#Works",
+      name: "My Works",
+    },
+    {
+      to: "#Contact",
+      name: "Contact",
+    },
+  ]
 
   return (
     <Box
@@ -87,11 +101,16 @@ const MenuLinks = ({ isOpen }) => {
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem className={currentRoute === '/Home' ? activeStyle : nonActiveStyle} to="/Home">Home</MenuItem>
-        <MenuItem className={currentRoute === '/Services' ? activeStyle : nonActiveStyle} to="/Services">My Sevices </MenuItem>
-        <MenuItem className={currentRoute === '/Projects' ? activeStyle : nonActiveStyle} to="/Projects">My Projects </MenuItem>
-        <MenuItem className={currentRoute === '/Skills' ? activeStyle : nonActiveStyle} to="/Skills">My Skills </MenuItem>
-        <MenuItem className={currentRoute === '/About' ? activeStyle : nonActiveStyle} to="/About">About Me </MenuItem>
+        {NavbarSection.map(({to, name, index}) => (
+          <Link
+            key={index}
+            href={to}
+          >
+            <Text className="text-black md:text-white hover:text-white md:hover:text-yellow-400 transition">
+              {name}
+            </Text>
+          </Link>
+        ))}
       </Stack>
     </Box>
   );
@@ -103,7 +122,7 @@ const NavBarContainer = ({ children, ...props }) => {
 
   useEffect(() => {
     gsap.from(NavbarElement, { opacity: 0, y: -90, })
-    gsap.to(NavbarElement, { opacity: 1, y: 0, ease: easeOut, duration: 1 })
+    gsap.to(NavbarElement, { opacity: 1, y: 0, ease: easeOut, duration: 0.7 })
   }, [])
 
   return (
