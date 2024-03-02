@@ -94,9 +94,9 @@ export default function AboutSection() {
 
             </div>
 
-            <div ref={el => {RightSection = el}} className="flex flex-col max-w-xl md:gap-4 gap-2 justify-center lg:items-start items-center">
+            <div ref={el => {RightSection = el}} className="flex flex-col w-full lg:max-w-xl md:gap-4 gap-2 justify-center lg:items-start items-center">
                 
-                <h2 ref={el => {AboutItem = el}} className="lg:text-md md:text-base text-justify text-sm text-black dark:text-white">Hi! I'm <text className="font-extrabold">Iqbal Alghifari</text>, and I'm a web developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and conceps in addition to working on various solo front end projects. I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.</h2>
+                <h2 ref={el => {AboutItem = el}} className="md:text-md md:text-base text-justify text-sm text-black dark:text-white">Hi! I'm <text className="font-extrabold">Iqbal Alghifari</text>, and I'm a web developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and conceps in addition to working on various solo front end projects. I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.</h2>
 
                 {/* <button ref={el => {Button = el}} id="Button" className="bg-black shadow-md shadow-black dark:bg-white md:text-base text-sm px-4 py-2 rounded-lg font-bold text-white dark:text-black">DOWNLOAD CV</button> */}
 

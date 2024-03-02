@@ -109,7 +109,7 @@ export default function ContactSection() {
 
             </div>
 
-            <div ref={SkillItem} className="grid grid-cols-5 lg:justify-items-end md:gap-y-8 gap-y-6 justify-items-center w-full md:w-[80%] lg:w-1/2">
+            <div ref={SkillItem} className="grid grid-cols-5 lg:justify-items-end md:gap-y-8 gap-y-6 justify-items-center w-full lg:w-1/2">
 
                 {SkillsData.map(({index, svg, name}) => (
                     <Tooltip label={name} fontSize='sm' className="bg-black dark:bg-slate-300 text-white dark:text-black">
