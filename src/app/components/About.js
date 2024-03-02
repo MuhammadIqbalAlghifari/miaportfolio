@@ -63,7 +63,7 @@ export default function AboutSection() {
     return (
         <section ref={el => {HeroSection = el}} id="About" className="max-w-7xl lg:py-24 md:py-18 py-11 lg:p-0 p-6 relative mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-            <div ref={el => {LeftSection = el}} className="flex justify-center gap-6 md:gap-12 items-center max-w-xl">
+            <div ref={el => {LeftSection = el}} className="flex justify-between lg:justify-center lg:gap-12 items-center lg:max-w-xl w-full">
 
                 <div ref={el => {AboutMe = el}} className="flex flex-col justify-center items-center gap-4">
 
@@ -96,7 +96,7 @@ export default function AboutSection() {
 
             <div ref={el => {RightSection = el}} className="flex flex-col w-full lg:max-w-xl md:gap-4 gap-2 justify-center lg:items-start items-center">
                 
-                <h2 ref={el => {AboutItem = el}} className="md:text-md md:text-base text-justify text-sm text-black dark:text-white">Hi! I'm <text className="font-extrabold">Iqbal Alghifari</text>, and I'm a web developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and conceps in addition to working on various solo front end projects. I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.</h2>
+                <h2 ref={el => {AboutItem = el}} className="md:text-md lg:text-base text-justify md:text-center lg:text-justify text-sm text-black dark:text-white">Hi! I'm <text className="font-extrabold">Iqbal Alghifari</text>, and I'm a web developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and conceps in addition to working on various solo front end projects. I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.</h2>
 
                 {/* <button ref={el => {Button = el}} id="Button" className="bg-black shadow-md shadow-black dark:bg-white md:text-base text-sm px-4 py-2 rounded-lg font-bold text-white dark:text-black">DOWNLOAD CV</button> */}
 

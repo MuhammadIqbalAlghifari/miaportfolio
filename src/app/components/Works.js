@@ -60,7 +60,7 @@ export default function WorksSection() {
     return (
         <section ref={el => {HeroSection = el}} id="Works" className="max-w-7xl lg:py-24 md:py-18 py-12 lg:p-0 p-6 relative mx-auto flex flex-col gap-14 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-            <div ref={el => {LeftSection = el}} className="flex justify-center gap-6 md:gap-12 items-center max-w-xl">
+            <div ref={el => {LeftSection = el}} className="flex justify-between lg:justify-center gap-6 lg:gap-12 items-center lg:max-w-xl w-full">
 
                 <div ref={el => {MyWorks = el}} className="flex flex-col justify-center items-center gap-4">
 

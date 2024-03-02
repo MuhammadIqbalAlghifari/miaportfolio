@@ -62,7 +62,7 @@ export default function HomeSection() {
 
       <div ref={el => {LeftHero = el}} className='bg-gray-300 flex p-8 flex-col gap-y-3 justify-center lg:items-start items-center lg:pt-0 pt-24 lg:h-screen lg:w-1/2 w-full h-1/2'>
 
-        <h1 className='text-black text-center lg:text-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-9xl' style={{fontFamily: 'Avant Garde'}}>UI UX Designer & Front End Web Developer</h1>
+        <h1 className='text-black text-center lg:text-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-9xl' style={{fontFamily: 'Avant Garde', lineHeight: '1.2'}}>UI UX Designer & Front End Web Developer</h1>
 
         <h1 className='text-black text-center lg:text-start text-xs md:text-sm 2xl:text-2xl' style={{fontFamily: 'Futura Hv'}}>Welcome to my portfolio website! I'm a passionate and experienced web developer with a focus creating an elegant user interface that user like to see. Explore my portfolio to see how i created website and crafted some functional website for you!</h1>
 
