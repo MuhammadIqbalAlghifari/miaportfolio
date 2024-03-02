@@ -76,7 +76,7 @@ export default function ContactSection() {
     return (
         <section ref={el => {HeroSection = el}} id="Skills" className="max-w-7xl lg:py-24 md:py-18 py-12 lg:p-0 p-6 relative mx-auto flex flex-col gap-14 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-            <div ref={el => {LeftSection = el}} className="flex flex-row-reverse lg:flex-row lg:gap-12 lg:justify-center justify-between items-center w-full lg:max-w-xl">
+            <div ref={el => {LeftSection = el}} className="flex flex-row-reverse lg:flex-row lg:gap-12 gap-6 lg:justify-center justify-center md:justify-between items-center w-full lg:max-w-xl">
 
                 <div ref={el => {MySkills = el}} className="flex flex-col justify-center items-center gap-4">
 

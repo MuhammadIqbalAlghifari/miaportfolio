@@ -63,7 +63,7 @@ export default function AboutSection() {
     return (
         <section ref={el => {HeroSection = el}} id="About" className="max-w-7xl lg:py-24 md:py-18 py-11 lg:p-0 p-6 relative mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
 
-            <div ref={el => {LeftSection = el}} className="flex justify-between lg:justify-center lg:gap-12 items-center lg:max-w-xl w-full">
+            <div ref={el => {LeftSection = el}} className="flex md:justify-between justify-center lg:justify-center gap-6 lg:gap-12 items-center lg:max-w-xl w-full">
 
                 <div ref={el => {AboutMe = el}} className="flex flex-col justify-center items-center gap-4">
 
