@@ -11,14 +11,14 @@ import "yet-another-react-lightbox/styles.css";
 
 export default function HomeSection() {
 
-  let LeftHero, RightHero, LeftSection, RightSection = useRef();
+  let LeftHero, RightHero = useRef();
 
   const [isOpen, setOpen] = useState(false)
 
-  const isDekstop = window.matchMedia("(min-width: 1024px)").matches;
-
+  
   useEffect(() => {
-
+    const isDekstop = window.matchMedia("(min-width: 1024px)").matches;
+    
     const animateOnScroll = (element, { opacity, x, y }) => {
       gsap.fromTo(element, { opacity: 0, x, y }, {
         opacity: 1,
@@ -43,7 +43,7 @@ export default function HomeSection() {
 
     isDekstop ? animateOnDesktop() : animateOnMobile()
 
-  }, [isDekstop])
+  }, [])
 
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll("#Picture"),{
@@ -60,7 +60,7 @@ export default function HomeSection() {
   return (
     <section id='Home' className="w-full flex lg:flex-row flex-col items-center justify-center h-screen">
 
-      <div ref={isDekstop ? el => {LeftHero = el} : el => {LeftSection = el} } className='bg-gray-300 flex p-8 flex-col gap-y-3 justify-center lg:items-start items-center lg:pt-0 pt-24 lg:h-screen lg:w-1/2 w-full h-1/2'>
+      <div ref={el => {LeftHero = el}} className='bg-gray-300 flex p-8 flex-col gap-y-3 justify-center lg:items-start items-center lg:pt-0 pt-24 lg:h-screen lg:w-1/2 w-full h-1/2'>
 
         <h1 className='text-black text-center lg:text-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-9xl' style={{fontFamily: 'Avant Garde'}}>UI UX Designer & Front End Web Developer</h1>
 
@@ -71,7 +71,7 @@ export default function HomeSection() {
           
       </div>
 
-      <div ref={isDekstop ? el => {RightHero = el} : el => {RightSection = el} } className='bg-[#1c1c1c] flex p-8 flex-col gap-y-3 md:gap-y-5 justify-center items-center lg:h-screen lg:w-1/2 w-full h-1/2'>
+      <div ref={el => {RightHero = el}} className='bg-[#1c1c1c] flex p-8 flex-col gap-y-3 md:gap-y-5 justify-center items-center lg:h-screen lg:w-1/2 w-full h-1/2'>
 
         <div id='Picture' className='bg-gray-300 p-2 w-4/5 h-2/3 shadow-md shadow-black'>
 
