@@ -1,7 +1,7 @@
 "use client"
 import { easeOut } from "framer-motion"
 import gsap from "gsap"
-import { useLayoutEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { Menu, MenuButton, MenuItem, MenuList, Button } from "@chakra-ui/react"
 import ChevronDownIcon from "./ChevronDownIcon"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -10,7 +10,7 @@ export default function AboutSection() {
 
     let HeroSection, LeftSection, AboutMe, TittleItem, DescItem, RightSection, AboutItem, ButtonCv = useRef() 
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
     
         const animateOnScroll = (element, { opacity, x, y }) => {
@@ -50,15 +50,7 @@ export default function AboutSection() {
         const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     
         isDesktop ? animateOnDesktop() : animateOnMobile();
-    }, []);
-
-    useLayoutEffect(() => {
-        return () => {
-          ScrollTrigger.getAll().forEach((trigger) => {
-            trigger.kill();
-          });
-        };
-      }, []);
+    });
 
     return (
         <section ref={el => {HeroSection = el}} id="About" className="max-w-7xl lg:py-24 md:py-18 py-11 lg:p-0 p-6 relative mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>
