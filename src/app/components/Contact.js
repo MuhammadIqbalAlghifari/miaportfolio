@@ -48,14 +48,6 @@ export default function ContactSection() {
 
         isDekstop ? animateOnDekstop() : animateOnMobile()
 
-    }, [])
-
-    useEffect(() => {
-        return () => {
-            ScrollTrigger.getAll().forEach((trigger) => {
-                trigger.kill();
-            })
-        }
     })
 
     return (

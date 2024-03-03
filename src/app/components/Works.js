@@ -47,15 +47,7 @@ export default function WorksSection() {
         const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     
         isDesktop ? animateOnDesktop() : animateOnMobile();
-    }, []);
-
-    useEffect(() => {
-        return () => {
-          ScrollTrigger.getAll().forEach((trigger) => {
-            trigger.kill();
-          });
-        };
-      }, []);
+    });
 
     return (
         <section ref={el => {HeroSection = el}} id="Works" className="max-w-7xl lg:py-24 md:py-18 py-12 lg:p-0 p-6 relative mx-auto flex flex-col gap-14 lg:gap-0 lg:flex-row lg:justify-between justify-center lg:items-start items-center" style={{ fontFamily: "Futura Md"}}>

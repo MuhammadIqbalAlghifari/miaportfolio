@@ -50,15 +50,7 @@ export default function ContactSection() {
         const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     
         isDesktop ? animateOnDesktop() : animateOnMobile();
-    }, []);
-
-    useEffect(() => {
-        return () => {
-          ScrollTrigger.getAll().forEach((trigger) => {
-            trigger.kill();
-          });
-        };
-      }, []);
+    });
 
 
     useEffect(() => {

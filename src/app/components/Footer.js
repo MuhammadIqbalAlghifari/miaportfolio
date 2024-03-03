@@ -44,15 +44,7 @@ export default function Footer() {
 
         isDekstop ? animateOnDekstop() : animateOnMobile();
 
-    }, [])
-
-    useEffect(() => {
-        return () => {
-            ScrollTrigger.getAll().forEach((trigger) => {
-                trigger.kill();
-            })
-        }
-    }, [])
+    })
 
     const Year = new Date().getFullYear();
 

@@ -2,7 +2,7 @@
 
 import { easeOut } from "framer-motion"
 import gsap from "gsap"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useRef, useState } from "react"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
@@ -56,14 +56,6 @@ export default function InternArticlePage() {
         animateOnScroll([SecondParagraphDescriptionOne, SecondParagraphDescriptionTwo, SecondParagraphImageFirst, SecondParagraphImageSecond, SecondParagraphImageThird], {opacity: 0, y: 15})
         animateOnScroll(Button, {opacity: 0, y: 15})
 
-    })
-
-    useEffect(() => {
-        return () => {
-            ScrollTrigger.getAll().forEach((trigger) => {
-                trigger.kill()
-            })
-        }
     })
 
     return (

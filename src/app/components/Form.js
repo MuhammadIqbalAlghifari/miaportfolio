@@ -131,15 +131,7 @@ export default function FormEmail() {
 
         isDekstop ? animateOnDekstop() : animateOnMobile()
 
-    }, [])
-
-    useEffect(() => {
-        return () => {
-            ScrollTrigger.getAll().forEach((trigger) => {
-                trigger.kill()
-            });
-        }
-    }, [])
+    })
 
     useEffect(() => {
         VanillaTilt.init(document.querySelectorAll("#form"),{
