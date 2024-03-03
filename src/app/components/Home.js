@@ -30,17 +30,29 @@ export default function HomeSection() {
       })
     }
 
+    
     const animateOnDesktop = () => {
       animateOnScroll(LeftHero, {opacity: 0, y: -100})
       animateOnScroll(RightHero, {opacity: 0, y: 100})
     }
-
+    
     const animateOnMobile = () => {
       animateOnScroll(LeftHero, {opacity: 0, y: -30})
       animateOnScroll(RightHero, {opacity: 0, y: 30})
     }
-
-    isDekstop ? animateOnDesktop() : animateOnMobile()
+    
+    isDekstop ? animateOnDesktop() : animateOnMobile();
+    
+    const handleScroll = () => {
+      const scrollValue = window.scrollY;
+      gsap.to('.parallax-element', { 
+        duration: 0.5, // Adjust the duration as needed
+        y: -scrollValue * 0.2, 
+        ease: easeOut // You can adjust the easing function
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll);
 
   }, [])
 
@@ -57,7 +69,7 @@ export default function HomeSection() {
 },[])
 
   return (
-    <section id='Home' className="w-full flex lg:flex-row flex-col items-center justify-center h-screen">
+    <section id='Home' className="w-full flex lg:flex-row flex-col items-center justify-center h-screen parallax-element">
 
       <div ref={el => {LeftHero = el}} className='bg-gray-300 flex p-8 flex-col gap-y-3 justify-center lg:items-start items-center lg:pt-0 pt-24 lg:h-screen lg:w-1/2 w-full h-1/2'>
 
