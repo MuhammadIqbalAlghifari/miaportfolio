@@ -2,9 +2,9 @@
 import { easeOut } from "framer-motion"
 import gsap from "gsap"
 import { useEffect, useRef } from "react"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import { Menu, MenuButton, MenuItem, MenuList, Button } from "@chakra-ui/react"
 import ChevronDownIcon from "./ChevronDownIcon"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export default function AboutSection() {
 

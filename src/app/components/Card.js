@@ -3,8 +3,8 @@ import { easeOut } from "framer-motion";
 import gsap from "gsap";
 import { useEffect, useRef } from "react"
 import VanillaTilt from "vanilla-tilt"
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Tooltip } from "@chakra-ui/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Card() {
 

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import FormEmail from "./Form"
 import gsap from "gsap";
 import { easeOut } from "framer-motion";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ContactSection() {
 

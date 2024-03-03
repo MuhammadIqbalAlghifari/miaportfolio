@@ -3,7 +3,7 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
 import { easeOut } from "framer-motion";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useState, useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 

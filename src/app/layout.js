@@ -1,13 +1,15 @@
-import { NextUIProvider } from '@nextui-org/react'
+import gsap from 'gsap'
 import './globals.css'
 import './style.css'
 import { ChakraProvider } from '@chakra-ui/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export const metadata = {
   title: 'Portfolio',
   description: 'Created by next.js',
 }
 
+gsap.registerPlugin(ScrollTrigger)
 
 export default function RootLayout({ children }) {
   return (

@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Card from "./Card"
 import { easeOut } from "framer-motion";
 import { useEffect, useRef } from "react";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function WorksSection() {
 
