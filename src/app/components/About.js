@@ -1,7 +1,7 @@
 "use client"
 import { easeOut } from "framer-motion"
 import gsap from "gsap"
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import { Menu, MenuButton, MenuItem, MenuList, Button } from "@chakra-ui/react"
 import ChevronDownIcon from "./ChevronDownIcon"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -10,7 +10,7 @@ export default function AboutSection() {
 
     let HeroSection, LeftSection, AboutMe, TittleItem, DescItem, RightSection, AboutItem, ButtonCv = useRef() 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
     
         const animateOnScroll = (element, { opacity, x, y }) => {
@@ -52,7 +52,7 @@ export default function AboutSection() {
         isDesktop ? animateOnDesktop() : animateOnMobile();
     }, []);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         return () => {
           ScrollTrigger.getAll().forEach((trigger) => {
             trigger.kill();
