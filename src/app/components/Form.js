@@ -131,7 +131,7 @@ export default function FormEmail() {
 
         isDekstop ? animateOnDekstop() : animateOnMobile()
 
-    })
+    }, [])
 
     useEffect(() => {
         VanillaTilt.init(document.querySelectorAll("#form"),{

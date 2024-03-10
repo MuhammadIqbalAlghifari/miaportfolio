@@ -47,16 +47,14 @@ export default function InternArticlePage() {
             })
         }
 
-        animateOnScroll(TittleText, {opacity: 0})
-        animateOnScroll(CategoryItem, {opacity: 0, x: -15})
-        animateOnScroll(PublishedDate, {opacity: 0, x: 15})
+        animateOnScroll([TittleText, CategoryItem, PublishedDate], {opacity: 0})
         animateOnScroll(FirstParagraphTittle, {opacity: 0})
         animateOnScroll([FirstParagraphDescription, SecondParagraphDescription, FirstParagraphImage], {opacity: 0, y: 15})
         animateOnScroll(SecondParagraphTittle, {opacity: 0})
         animateOnScroll([SecondParagraphDescriptionOne, SecondParagraphDescriptionTwo, SecondParagraphImageFirst, SecondParagraphImageSecond, SecondParagraphImageThird], {opacity: 0, y: 15})
         animateOnScroll(Button, {opacity: 0, y: 15})
 
-    })
+    }, [])
 
     return (
         <section id="gallery" className="w-full flex flex-col justify-center items-center py-2 transition duration-500">
