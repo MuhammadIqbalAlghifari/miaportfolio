@@ -122,7 +122,7 @@ const NavBarContainer = ({ children, ...props }) => {
 
   useEffect(() => {
     gsap.from(NavbarElement, { opacity: 0, y: -90, })
-    gsap.to(NavbarElement, { opacity: 1, y: 0, ease: easeOut, duration: 0.7 })
+    gsap.to(NavbarElement, { opacity: 1, y: 0, ease: easeOut, duration: 1, stagger: 0.3, delay: 0.2 })
   }, [])
 
   return (
